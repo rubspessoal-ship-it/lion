@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para você</title>
+
+<style>
+body {
+  margin: 0;
+  background: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+img {
+  max-width: 95%;
+  max-height: 90vh;
+  transition: transform 0.3s ease;
+  cursor: zoom-in;
+}
+
+.spotify-player {
+  margin-bottom: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <img id="foto" src="SUA-FOTO.jpg">
+</div>
+
+<div class="spotify-player">
+  <iframe style="border-radius:12px"
+    src="LINK_DO_SPOTIFY_EMBED"
+    width="300"
+    height="80"
+    frameBorder="0"
+    allowfullscreen=""
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+  </iframe>
+</div>
+
+<script>
+const img = document.getElementById("foto");
+let scale = 1;
+
+img.addEventListener("wheel", function(e){
+  e.preventDefault();
+  scale += e.deltaY * -0.001;
+  scale = Math.min(Math.max(1, scale), 3);
+  img.style.transform = `scale(${scale})`;
+});
+</script>
+
+</body>
+</html>
